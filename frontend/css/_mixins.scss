@@ -1,0 +1,18 @@
+// _mixins.scss
+
+@mixin border_radius($radius, $shadow) {
+    border-radius: $radius;
+    box-shadow: $shadow;
+}
+
+@mixin flex($direction, $main_alignment, $cross_alignment) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $main_alignment;
+    align-items: $cross_alignment;
+}
+
+@mixin dimensions($width, $height) {
+    width: $width;
+    height: $height;
+}
