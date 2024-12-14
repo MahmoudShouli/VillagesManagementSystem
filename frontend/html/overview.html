@@ -1,0 +1,74 @@
+<!-- Overview Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villages Manager</title>
+    <link rel="stylesheet" href="../css/overview.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+</head> 
+<body>
+    <div class = "dashboard">
+        <h1 class="white">Dashboard</h1>
+        <ul class="off-white">
+            <li>Overview</li>
+            <li>Village Management</li>
+            <li>Chat</li>
+            <li>Gallery</li>
+        </ul>
+        <div class="dashboard-footer white">
+            <img src="../../images/visa.png" alt="profile" class="profile-pic">
+            <p>Mahmoud Shouli</p>
+            <p class="red">Log Out</p>          
+        </div>
+    </div>
+
+    <h1 class="off-white">Overview</h1>
+
+    <div class="grid-container">
+        <div id="map" class="grid-item item1"></div>
+
+        <div class="grid-item item2">
+            Total Number of Villages</br>
+            8
+        </div>
+
+        <div class="grid-item item3">
+            Total Number of Urban Areas</br>
+            3
+        </div>
+
+        <div class="grid-item item4">
+            Total Population Size</br>
+            660000
+        </div>
+
+        <div class="grid-item item5">
+            Average Land Area<br>
+            11.88</br>
+            <span id="sq" class="off-white">sq km</span>
+        </div>
+
+        <div class="grid-item item6">
+            <h2 class="white">Age Distribution</h2>
+            <canvas id="age-chart" ></canvas>
+        </div>
+
+        <div class="grid-item item7">
+            <h2 class="white">Gender Ratios</h2>
+            <canvas id="gender-chart" ></canvas>
+        </div>
+
+        <div class="grid-item item8">
+            <canvas id="population"></canvas>
+        </div>
+    </div>
+
+
+    <script src="../js/overview.js"></script>
+</body>
+</html>
