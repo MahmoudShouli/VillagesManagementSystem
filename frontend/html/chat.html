@@ -1,0 +1,68 @@
+<!-- Overview Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villages Manager</title>
+    <link rel="stylesheet" href="../css/chat.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+
+
+</head> 
+<body>
+    <div class = "dashboard">
+        <h1 class="white">Dashboard</h1>
+        <ul class="off-white">
+            <li><a href="../html/overview.html">Overview</a></li>
+            <li>Village Management</li>
+            <li><a href="../html/chat.html">Chat</a></li>
+            <li>Gallery</li>
+        </ul>
+        <div class="dashboard-footer white">
+            <img src="../../images/visa.png" alt="profile" class="profile-pic">
+            <p>Mahmoud Shouli</p>
+            <p class="red">Log Out</p>          
+        </div>
+    </div>
+
+    <div class="chat-container">
+        <h1 class="white">Chat with Admins</h1>
+        <input type="text" placeholder="Search for an admin..">
+        <div class="available-admins">
+            <h3 class="white">Available Admins</h3>
+            <div id="admins">
+                <div class="admin-container">
+                    <img src="../../images/visa.png" alt="Admin1" class="profile-pic">
+                    <span class="admin off-white">Admin1</span>
+                </div>
+                <div class="admin-container">
+                    <img src="../../images/visa.png" alt="Admin2" class="profile-pic">
+                    <span class="admin off-white">Admin2</span>
+                </div>
+                <div class="admin-container">
+                    <img src="../../images/visa.png" alt="Admin3" class="profile-pic">
+                    <span class="admin off-white">Admin3</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="chatting">
+            <h3 class="white">Chat with: <span id="admin-name" class="off-white">Admin1</span></h3>
+            <div class="messages">
+                <p class="off-white admin_para">Admin1: <span class="admin-msg">Hello! How can I assist you today?</span></p>
+                <p class="off-white user_para">You: <span class="user-msg">I have a question about my account.</span></p>
+                <p class="off-white admin_para">Admin1: <span class="admin-msg">Sure! Please provide your account details.</span></p>
+            </div>
+            <label for="msg-area" hidden>message</label>
+            <textarea id="msg-area" name="msg-area" rows="5" placeholder="Type your message..."></textarea>
+            <button class="white" type="submit" id="send-btn">Send</button>
+        </div>
+    
+    </div>
+
+
+    <script src="../js/chat.js"></script>
+</body>
+</html>
