@@ -11,9 +11,9 @@ marker.bindPopup('Example Marker').openPopup();
 
 
 //age chart
-var xValues = ["0-18", "19-35", "36-50", "51-65", "65+"];
-var yValues = [55, 49, 44, 24, 15];
-var barColors = [
+let xValues = ["0-18", "19-35", "36-50", "51-65", "65+"];
+let yValues = [55, 49, 44, 24, 15];
+let barColors = [
 "#a74c65",
 "#2f71a3",
 "#a58c4d",
