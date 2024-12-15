@@ -1,5 +1,6 @@
 @use 'mixins';
 @use 'vars';
+@use 'dashboard';
 
 body {
     background-color: vars.$background-color;
@@ -9,23 +10,7 @@ body {
 }
 
 .dashboard {
-    background-color: vars.$form-background-color;
-    position: fixed;
-    height: 100vh;
-    width: 20%;
-    top: 0;
-    text-align: left;
-
-}
-
-ul {
-    list-style: none;
-    padding-top: 12%;
-}
-
-li {
-    margin-top: 13%;
-    font-size: vars.$large-font;
+    @extend .dashboard;
 }
 
 .grid-container {
@@ -35,6 +20,11 @@ li {
     margin-right: 2%;
     
 }
+
+.dashboard-footer {
+    @extend .dashboard-footer;
+}
+
 
 .grid-item {
     background-color: vars.$form-background-color;
@@ -76,22 +66,15 @@ li {
     grid-area: 4 / 1 / 5 / 5;
 }
 
-h1 {
+.overview {
     margin-left: 22% ;
-}
-
-
-.dashboard-footer {
-    @include mixins.flex(row, space-around, center);
-    margin-top: 105%;
-    font-size: 1.4em;
 }
 
 .red {
     color: red;
 }
 .profile-pic {
-    @include mixins.image(20%, 20%, 50%);    
+    @include mixins.image(80px, 80px, 50%);    
 }
 
 #sq {
@@ -105,3 +88,7 @@ h1 {
     
 }
 
+a:visited, a {
+    text-decoration: none;
+    color: vars.$secondary-text-color;
+}

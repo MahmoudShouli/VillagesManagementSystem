@@ -1,0 +1,118 @@
+@use 'mixins';
+@use 'vars';
+@use 'dashboard';
+
+body {
+    background-color: vars.$background-color;
+    font: 100% vars.$font-stack;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard {
+    @extend .dashboard;
+}
+
+.chat-container {
+    @include mixins.flex(column, start, start);
+    height: 100vh;
+    margin-left: 22%;  
+    margin-right: 2%;
+}
+
+.dashboard-footer {
+    @extend .dashboard-footer;
+}
+
+.white {
+    color: vars.$primary-text-color;
+}
+
+
+.off-white {
+    color: vars.$secondary-text-color;
+}
+
+.red {
+    color: red;
+}
+.profile-pic {
+    @include mixins.image(80px, 80px, 50%);    
+}
+
+
+input {
+    @include mixins.dimensions(100%, 3em);
+    @include mixins.border_radius(8px, none);
+    margin-bottom: 10px;
+    
+}
+
+.available-admins {
+    background-color: vars.$form-background-color;
+    @include mixins.dimensions(100%, fit-content );
+    @include mixins.border_radius(8px, none);
+    padding-left: 10px;
+    padding-bottom: 40px;
+
+}
+
+img {
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+#admins {
+    @include mixins.flex(row, start, center);
+}
+
+.admin {
+    padding-left: 25px;
+    padding-top: 20px;
+}
+
+#chatting {
+    background-color: vars.$form-background-color;
+    @include mixins.dimensions(100%, 580px );
+    @include mixins.border_radius(8px, none);
+    margin-top: 18px;
+    padding-left: 10px;
+    visibility: hidden;
+}
+
+.messages {
+    @include mixins.dimensions(98%, 250px );
+    @include mixins.border_radius(8px, none);
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+.admin-msg {
+    color: vars.$button-color;
+}
+
+.user-msg {
+    color: greenyellow;
+}
+
+#msg-area {
+    @include mixins.border_radius(8px, none);
+    width: 99%;
+    height: 100px;
+    margin-top: 30px;
+    padding: 5px;
+}
+
+#send-btn {
+    background-color: vars.$button-color;
+    @include mixins.dimensions(fit-content, 3em );
+    @include mixins.border_radius(8px, none);
+    margin-top: 20px;
+}
+
+a:visited, a {
+    text-decoration: none;
+    color: vars.$secondary-text-color;
+}

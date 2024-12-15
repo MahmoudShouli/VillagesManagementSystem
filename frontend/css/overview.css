@@ -1,10 +1,3 @@
-body {
-  background-color: #1a202c;
-  font: 100% Arial, Helvetica, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
 .dashboard {
   background-color: #1f2937;
   position: fixed;
@@ -13,15 +6,32 @@ body {
   top: 0;
   text-align: left;
 }
-
-ul {
+.dashboard h1 {
+  padding-left: 26px;
+}
+.dashboard ul {
   list-style: none;
   padding-top: 12%;
 }
-
-li {
+.dashboard ul li {
   margin-top: 13%;
   font-size: 1.5em;
+}
+
+.dashboard-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 105%;
+  font-size: 1.4em;
+}
+
+body {
+  background-color: #1a202c;
+  font: 100% Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .grid-container {
@@ -79,17 +89,8 @@ li {
   grid-area: 4/1/5/5;
 }
 
-h1 {
+.overview {
   margin-left: 22%;
-}
-
-.dashboard-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 105%;
-  font-size: 1.4em;
 }
 
 .red {
@@ -97,8 +98,8 @@ h1 {
 }
 
 .profile-pic {
-  width: 20%;
-  height: 20%;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
 }
 
@@ -110,6 +111,11 @@ h1 {
 #age-chart, #gender-chart {
   margin-top: 2rem;
   height: 100%;
+}
+
+a:visited, a {
+  text-decoration: none;
+  color: #cccccc;
 }
 
 /*# sourceMappingURL=overview.css.map */
