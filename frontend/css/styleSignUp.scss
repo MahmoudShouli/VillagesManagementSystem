@@ -40,7 +40,7 @@ label {
 input[type=text],
 input[type=password] {
     padding: 10px;
-    margin: 3px 0 15px 0;
+    margin: 3px 0 0 0;
     border-radius: 5px;
     border: none;
 }
@@ -74,8 +74,15 @@ p {
     border: none;
     border-radius: 5px;
     padding: 10px;
+    cursor: pointer;
 }
 
 form {
     width: 100%;
+}
+
+.errorSpan {
+    color: rgb(255, 91, 91);
+    font-size: 14px;
+    margin-bottom: 15px;
 }

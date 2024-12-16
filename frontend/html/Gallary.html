@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="../css/styleGallary.css">
+    <script src="../js/indexGallary.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="dashboard">
+            <h1 class="white">Dashboard</h1>
+            <ul class="off-white">
+                <li><a href="../html/overview.html">Overview</a></li>
+                <li><a href="../html/Village.html">Village Management</a></li>
+                <li><a href="../html/chat.html">Chat</a></li>
+                <li><a href="../html/Gallary.html">Gallery</a></li>
+            </ul>
+            <div class="dashboard-footer white">
+                <img src="../../images/visa.png" alt="profile" class="profile-pic">
+                <p>Mahmoud Shouli</p>
+                <p class="red">Log Out</p>
+            </div>
+        </div>
+        <div class="content">
+            <div>
+                <button class="imgbtn" onclick="popUpShow()"><b>Add New Image</b></button>
+            </div>
+            <div class="images">
+            </div>
+            <div class="popUp-overlay" id="popUp-overlay">
+                <div class="popUp">
+                    <div class="popHeader">
+                        <h2 id="popH2">Add New Image</h2>
+                        <span class="popClose" id="popClose" onclick="popUpHide()">&#10006;</span>
+                    </div>
+                    <form class="popContent">
+                        <label for="URLPhoto">URL Photo</label>
+                        <input type="text" placeholder="URL" name="URLPhoto" id="URLPhoto" required>
+
+                        <label for="DescriptionPhoto">Description</label>
+                        <input type="text" placeholder="Description of the village image" name="DescriptionPhoto"
+                            id="Description" required>
+
+                        <button type="button"
+                            onclick="addImage(document.getElementById('URLPhoto').value,document.getElementById('Description').value)"
+                            class="popSubmit" id="popSubmit">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

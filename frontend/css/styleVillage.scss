@@ -1,0 +1,271 @@
+@use 'mixins';
+@use 'vars';
+@use 'dashboard';
+$button-add-color: #4a5568;
+$button-add-color-hover: #343c48;
+$search-bar-color: #374151;
+$text-search-color: #8e96a2;
+$btn-color-village: #718096;
+$btn-color-village-hover: #586374;
+
+body {
+    background: vars.$background-color;
+    font: 100% vars.$font-stack;
+}
+
+.dashboard {
+    @extend .dashboard;
+    grid-area: dash;
+}
+
+.dashboard-footer {
+    @extend .dashboard-footer;
+}
+
+.white {
+    color: vars.$primary-text-color;
+}
+
+
+.off-white {
+    color: vars.$secondary-text-color;
+}
+
+.red {
+    color: red;
+}
+
+.profile-pic {
+    @include mixins.image(80px, 80px, 50%);
+}
+
+a:visited,
+a {
+    text-decoration: none;
+    color: vars.$secondary-text-color;
+}
+
+img {
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+// above is for any dashboard
+
+.content {
+    grid-area: content;
+    @include mixins.grid(1fr, 7% 1fr, 10px);
+    // align-items: center;
+}
+
+.main {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "dash content";
+}
+
+.villagebtn {
+    background-color: $button-add-color;
+    color: vars.$primary-text-color;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.villagebtn:hover {
+    background-color: $button-add-color-hover;
+}
+
+.villages {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: repeat(4, min-content);
+    background-color: vars.$form-background-color;
+    margin: 0 20px 20px 20px;
+    color: vars.$primary-text-color;
+}
+
+#villageText {
+    margin: 20px;
+}
+
+#searchBar {
+    margin: 0 20px 20px 20px;
+    width: auto;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: $search-bar-color;
+    color: $text-search-color;
+    font-size: vars.$medium-font;
+
+    border-color: $text-search-color;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#searchBar::placeholder {
+    color: $text-search-color;
+}
+
+#searchBar:focus {
+    outline-style: solid;
+    outline-color: $text-search-color;
+}
+
+#sortBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px 20px 20px;
+}
+
+#sortSelect {
+    background-color: $search-bar-color;
+    color: $text-search-color;
+    padding: 4px;
+    font-size: vars.$medium-font;
+
+    border-radius: 3px;
+    border-color: $text-search-color;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+}
+
+#sortSelect:focus {
+    outline-style: solid;
+    outline-color: $text-search-color;
+}
+
+#pageMove {
+    display: flex;
+    align-items: center;
+}
+
+#nextBtnPage,
+#prevBtnPage {
+    background-color: $btn-color-village;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+    padding: 8px;
+    color: vars.$primary-text-color;
+    cursor: pointer;
+}
+
+#nextBtnPage:hover,
+#prevBtnPage:hover {
+    background-color: $btn-color-village-hover;
+}
+
+#villagesList {
+    margin: 20px;
+}
+
+.villageCom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $search-bar-color;
+    padding: 0 20px 0 20px;
+}
+
+.villageBtn>button {
+    background-color: $btn-color-village;
+    border: none;
+    color: vars.$primary-text-color;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 4px;
+}
+
+.villageBtn>button:hover {
+    background-color: $btn-color-village-hover;
+}
+
+// All Down For Pop Up overlay.
+.popUp-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popUp {
+    color: vars.$primary-text-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: vars.$form-background-color;
+    padding: 20px;
+    border-style: solid;
+    border-radius: 8px;
+    width: 20%;
+}
+
+.popSubmit {
+    color: vars.$primary-text-color;
+    background-color: vars.$button-color;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.popHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.popClose {
+    cursor: pointer;
+}
+
+.popUp {
+    display: flex;
+    flex-direction: column;
+}
+
+.popContent {
+    display: flex;
+    flex-direction: column;
+}
+
+#popH2 {
+    padding: 0;
+    margin: 0;
+}
+
+.popInput {
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 4px;
+    background-color: $search-bar-color;
+    border: none;
+    border-radius: 3px;
+    color: $text-search-color;
+}
+
+.popInput:focus {
+    outline-style: solid;
+    outline-color: vars.$primary-text-color;
+}
+
+.popLabel {
+    font-size: 13px;
+}

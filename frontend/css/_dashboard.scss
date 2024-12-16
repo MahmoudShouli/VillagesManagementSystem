@@ -1,0 +1,35 @@
+@use 'mixins';
+@use 'vars';
+
+.dashboard {
+    background-color: vars.$form-background-color;
+    position: fixed;
+    height: 100vh;
+    width: 20%;
+    top: 0;
+    text-align: left;
+
+    h1 {
+        padding-left: 26px;
+    }
+
+    ul {
+        list-style: none;
+        padding-top: 12%;
+
+        li {
+            margin-top: 13%;
+            font-size: vars.$large-font;
+        }
+    }
+
+
+}
+
+
+.dashboard-footer {
+    @include mixins.flex(row, space-around, center);
+    margin-top: 105%;
+    font-size: 1.4em;
+}
+

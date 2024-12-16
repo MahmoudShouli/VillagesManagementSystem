@@ -1,0 +1,286 @@
+.dashboard {
+  background-color: #1f2937;
+  position: fixed;
+  height: 100vh;
+  width: 20%;
+  top: 0;
+  text-align: left;
+}
+.dashboard h1 {
+  padding-left: 26px;
+}
+.dashboard ul {
+  list-style: none;
+  padding-top: 12%;
+}
+.dashboard ul li {
+  margin-top: 13%;
+  font-size: 1.5em;
+}
+
+.dashboard-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 105%;
+  font-size: 1.4em;
+}
+
+body {
+  background: #1a202c;
+  font: 100% Arial, Helvetica, sans-serif;
+}
+
+.dashboard {
+  grid-area: dash;
+}
+
+.white {
+  color: #ffffff;
+}
+
+.off-white {
+  color: #cccccc;
+}
+
+.red {
+  color: red;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+a:visited,
+a {
+  text-decoration: none;
+  color: #cccccc;
+}
+
+img {
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.content {
+  grid-area: content;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 7% 1fr;
+  gap: 10px;
+}
+
+.main {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: 20% 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "dash content";
+}
+
+.villagebtn {
+  background-color: #4a5568;
+  color: #ffffff;
+  margin-left: 20px;
+  margin-top: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.villagebtn:hover {
+  background-color: #343c48;
+}
+
+.villages {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: repeat(4, min-content);
+  background-color: #1f2937;
+  margin: 0 20px 20px 20px;
+  color: #ffffff;
+}
+
+#villageText {
+  margin: 20px;
+}
+
+#searchBar {
+  margin: 0 20px 20px 20px;
+  width: auto;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #374151;
+  color: #8e96a2;
+  font-size: 1em;
+  border-color: #8e96a2;
+  border-style: solid;
+  border-width: 1px;
+}
+
+#searchBar::-moz-placeholder {
+  color: #8e96a2;
+}
+
+#searchBar::placeholder {
+  color: #8e96a2;
+}
+
+#searchBar:focus {
+  outline-style: solid;
+  outline-color: #8e96a2;
+}
+
+#sortBar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px 20px 20px;
+}
+
+#sortSelect {
+  background-color: #374151;
+  color: #8e96a2;
+  padding: 4px;
+  font-size: 1em;
+  border-radius: 3px;
+  border-color: #8e96a2;
+  border-style: solid;
+  border-width: 1px;
+  cursor: pointer;
+}
+
+#sortSelect:focus {
+  outline-style: solid;
+  outline-color: #8e96a2;
+}
+
+#pageMove {
+  display: flex;
+  align-items: center;
+}
+
+#nextBtnPage,
+#prevBtnPage {
+  background-color: #718096;
+  border: none;
+  border-radius: 5px;
+  margin-left: 5px;
+  padding: 8px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#nextBtnPage:hover,
+#prevBtnPage:hover {
+  background-color: #586374;
+}
+
+#villagesList {
+  margin: 20px;
+}
+
+.villageCom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #374151;
+  padding: 0 20px 0 20px;
+}
+
+.villageBtn > button {
+  background-color: #718096;
+  border: none;
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 4px;
+}
+
+.villageBtn > button:hover {
+  background-color: #586374;
+}
+
+.popUp-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popUp {
+  color: #ffffff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1f2937;
+  padding: 20px;
+  border-style: solid;
+  border-radius: 8px;
+  width: 20%;
+}
+
+.popSubmit {
+  color: #ffffff;
+  background-color: #3399ff;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.popHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.popClose {
+  cursor: pointer;
+}
+
+.popUp {
+  display: flex;
+  flex-direction: column;
+}
+
+.popContent {
+  display: flex;
+  flex-direction: column;
+}
+
+#popH2 {
+  padding: 0;
+  margin: 0;
+}
+
+.popInput {
+  padding: 10px;
+  margin-bottom: 10px;
+  margin-top: 4px;
+  background-color: #374151;
+  border: none;
+  border-radius: 3px;
+  color: #8e96a2;
+}
+
+.popInput:focus {
+  outline-style: solid;
+  outline-color: #ffffff;
+}
+
+.popLabel {
+  font-size: 13px;
+}/*# sourceMappingURL=styleVillage.css.map */

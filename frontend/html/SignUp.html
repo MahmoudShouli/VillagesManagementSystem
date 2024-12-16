@@ -17,17 +17,18 @@
             <div class="container">
                 <h2>Sign Up</h2>
                 <label for="FullName">Full Name</label>
-                <input type="text" placeholder="Enter your full name" name="FullName" required>
-
+                <input type="text" placeholder="Enter your full name" name="FullName" id="FullName" required>
+                <span id="FullName-error" class="errorSpan"></span>
 
                 <label for="Username">Username</label>
-                <input type="text" placeholder="Enter your username" name="Username" required>
-
+                <input type="text" placeholder="Enter your username" name="Username" id="UserName" required>
+                <span id="UserName-error" class="errorSpan"></span>
 
                 <label for="Password">Password</label>
-                <input type="password" placeholder="Enter your password" name="Password" required>
+                <input type="password" placeholder="Enter your password" name="Password" id="Password-input" required>
+                <span id="Password-error" class="errorSpan"></span>
 
-                <button type="submit" class="signupbtn">Sign Up</button>
+                <button type="button" class="signupbtn" onclick="signUpBtn()">Sign Up</button>
             </div>
         </form>
         <p>Already have an account? <a href="#" class="loginpage">Login</a></p>
