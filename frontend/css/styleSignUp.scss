@@ -1,0 +1,88 @@
+$BackColor: #1a202c;
+$FormBack: #1f2937;
+$ButtonColor: #3c82f6;
+$TextColor: white;
+$FontSize: 14px;
+$FontName: Helvetica, sans-serif;
+
+body {
+    background: $BackColor;
+    font-family: $FontName;
+}
+
+h2 {
+    color: $TextColor;
+    left: 50%;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#main {
+    background-color: $FormBack;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 20%;
+    border-radius: 5px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+
+label {
+    color: $TextColor;
+    font-size: $FontSize;
+}
+
+input[type=text],
+input[type=password] {
+    padding: 10px;
+    margin: 3px 0 0 0;
+    border-radius: 5px;
+    border: none;
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    outline: 2px solid $ButtonColor;
+    outline-offset: 1px;
+    box-shadow: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px 0 20px;
+}
+
+.loginpage {
+    color: $ButtonColor;
+}
+
+p {
+    color: $TextColor;
+    font-size: $FontSize;
+    margin-bottom: 20px;
+}
+
+.signupbtn {
+    background-color: $ButtonColor;
+    color: $TextColor;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+form {
+    width: 100%;
+}
+
+.errorSpan {
+    color: rgb(255, 91, 91);
+    font-size: 14px;
+    margin-bottom: 15px;
+}

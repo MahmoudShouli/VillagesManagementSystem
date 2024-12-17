@@ -1,0 +1,162 @@
+@use 'mixins';
+@use 'vars';
+@use 'dashboard';
+$button-add-color: #4a5568;
+$button-add-color-hover: #343c48;
+$search-bar-color: #374151;
+$text-search-color: #8e96a2;
+$btn-color-village: #718096;
+$btn-color-village-hover: #586374;
+
+body {
+    background: vars.$background-color;
+    font: 100% vars.$font-stack;
+}
+
+.dashboard {
+    @extend .dashboard;
+    grid-area: dash;
+}
+
+.dashboard-footer {
+    @extend .dashboard-footer;
+}
+
+.white {
+    color: vars.$primary-text-color;
+}
+
+
+.off-white {
+    color: vars.$secondary-text-color;
+}
+
+.red {
+    color: red;
+}
+
+.profile-pic {
+    @include mixins.image(80px, 80px, 50%);
+}
+
+a:visited,
+a {
+    text-decoration: none;
+    color: vars.$secondary-text-color;
+}
+
+img {
+    margin-left: 12px;
+    margin-right: 12px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+// above is for any dashboard
+
+.content {
+    grid-area: content;
+    @include mixins.grid(1fr, 7% 1fr, 10px);
+    // align-items: center;
+}
+
+.main {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "dash content";
+}
+
+.imgbtn {
+    background-color: $button-add-color;
+    color: vars.$primary-text-color;
+    margin-left: 20px;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.imgbtn:hover {
+    background-color: $button-add-color-hover;
+}
+
+.images {
+    @include mixins.grid(repeat(auto-fit, minmax(250px, min-content)), min-content, 15px);
+    margin: 0 15px 0 15px;
+}
+
+.popUp-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    // opacity: 50%;
+}
+
+.popUp {
+    color: vars.$primary-text-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: vars.$form-background-color;
+    padding: 20px;
+    border-style: solid;
+    border-radius: 8px;
+}
+
+.popSubmit {
+    color: vars.$primary-text-color;
+    background-color: vars.$button-color;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.popHeader {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.popClose {
+    margin-left: 50px;
+    cursor: pointer;
+}
+
+.popUp {
+    display: flex;
+    flex-direction: column;
+}
+
+.popContent {
+    display: flex;
+    flex-direction: column;
+}
+
+#popH2 {
+    padding: 0;
+    margin: 0;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 10px;
+    margin-top: 4px;
+    background-color: $search-bar-color;
+    border: none;
+    border-radius: 3px;
+    color: $text-search-color;
+}
+
+input:focus {
+    outline-style: solid;
+    outline-color: vars.$primary-text-color;
+}

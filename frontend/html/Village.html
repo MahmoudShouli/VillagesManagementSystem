@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="../css/styleVillage.css">
+    <script src="../js/indexVillage.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="dashboard">
+            <h1 class="white">Dashboard</h1>
+            <ul class="off-white">
+                <li><a href="../html/overview.html">Overview</a></li>
+                <li><a href="../html/Village.html">Village Management</a></li>
+                <li><a href="../html/chat.html">Chat</a></li>
+                <li><a href="../html/Gallary.html">Gallery</a></li>
+            </ul>
+            <div class="dashboard-footer white">
+                <img src="../../images/visa.png" alt="profile" class="profile-pic">
+                <p>Mahmoud Shouli</p>
+                <p class="red">Log Out</p>
+            </div>
+        </div>
+        <div class="content">
+            <div>
+                <button class="villagebtn" onclick="formFun('addVillage')"><b>Add New Village</b></button>
+            </div>
+            <div class="villages">
+                <h3 id="villageText">View Village List</h3>
+                <input type="text" placeholder="Search villages..." id="searchBar">
+                <div id="sortBar">
+                    <div id="sortBy">
+                        <label class="textSortBy" for="sortSelect">Sort by:</label>
+                        <select name="sortSelect" id="sortSelect">
+                            <option value="Default">Default</option>
+                            <option value="Alphabetical">Alphabetical</option>
+                        </select>
+                    </div>
+                    <div id="pageMove">
+                        <p class="textPageMove">Page:</p>
+                        <button id="nextBtnPage">Next</button>
+                        <button id="prevBtnPage">Prev</button>
+                    </div>
+                </div>
+                <div id="villagesList">
+                    <!-- <div class="villageCom">
+                        <p class="villageName">
+                            Jabalia - Gaza Strip
+                        </p>
+                        <div class="villageBtn">
+                            <button class="viewBtn">View</button>
+                            <button class="updateBtn">Update Village</button>
+                            <button class="deleteBtn">Delete Village</button>
+                            <button class="dataBtn">Update Demographic Data</button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="popUp-overlay" id="popUp-overlay">
+                <div class="popUp">
+                    <div class="popHeader">
+                        <h2 id="popH2">Add New Village</h2>
+                        <span class="popClose" id="popClose" onclick="popUpHide()">&#10006;</span>
+                    </div>
+                    <form class="popContent">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
