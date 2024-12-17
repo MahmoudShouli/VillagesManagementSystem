@@ -32,6 +32,7 @@ input[type="submit"] {
 input {
     @include mixins.dimensions(100%, 10em);
     @include mixins.border_radius(8px, none);
+    border: none;
     
 }
 
