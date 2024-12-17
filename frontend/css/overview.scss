@@ -1,0 +1,94 @@
+@use 'mixins';
+@use 'vars';
+@use 'dashboard';
+
+body {
+    background-color: vars.$background-color;
+    font: 100% vars.$font-stack;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard {
+    @extend .dashboard;
+}
+
+.grid-container {
+    @include mixins.grid(repeat(4, 1fr), 50% 20% 60% 80%, 1.5em);
+    height: 100vh;
+    margin-left: 22%;  
+    margin-right: 2%;
+    
+}
+
+.dashboard-footer {
+    @extend .dashboard-footer;
+}
+
+
+.grid-item {
+    background-color: vars.$form-background-color;
+    border-radius: 1em;
+}
+
+.white {
+    color: vars.$primary-text-color;
+}
+
+
+.off-white {
+    color: vars.$secondary-text-color;
+}
+
+.item1 {
+    grid-area: 1 / 1 / 2 / 5; 
+}
+
+.item2 , .item3, .item4, .item5 {
+    @extend .white;
+    @include mixins.flex(column, center, center);
+    font-size: vars.$large-font;
+    
+
+}
+
+.item6 {
+    grid-area: 3 / 1 / 4 / 3;
+    @include mixins.flex(column, start, center);
+}
+
+.item7 {
+    grid-area: 3 / 3 / 4 / 5;
+    @include mixins.flex(column, start, center);
+}
+
+.item8 {
+    grid-area: 4 / 1 / 5 / 5;
+}
+
+.overview {
+    margin-left: 22% ;
+}
+
+.red {
+    color: red;
+}
+.profile-pic {
+    @include mixins.image(80px, 80px, 50%);    
+}
+
+#sq {
+    align-self: start;
+    padding-left: 20%;
+}
+
+#age-chart , #gender-chart {
+    margin-top: 2rem;
+    height: 100%;
+    
+}
+
+a:visited, a {
+    text-decoration: none;
+    color: vars.$secondary-text-color;
+}

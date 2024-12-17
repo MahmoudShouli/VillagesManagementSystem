@@ -1,0 +1,46 @@
+@use 'mixins';
+@use 'vars';
+
+
+body {
+    @include mixins.flex(column, center, center);
+    @include mixins.dimensions(auto, 100vh);
+    background-color: vars.$background-color;
+    font: 100% vars.$font-stack;
+}
+
+.form-container {
+    @include mixins.border_radius(8px, vars.$shadow);
+    @include mixins.flex(column, center, center);
+    @include mixins.dimensions(20%, 35%);
+    background-color: vars.$form-background-color;
+    padding: 20px;
+}
+
+.white {
+    color: vars.$primary-text-color;
+}
+
+.off-white {
+    color: vars.$secondary-text-color;
+}
+
+input[type="submit"] {
+    background-color: vars.$button-color;
+}
+
+input {
+    @include mixins.dimensions(100%, 10em);
+    @include mixins.border_radius(8px, none);
+    
+}
+
+label {
+    align-self: start;
+}
+
+a:visited , a {
+    text-decoration: none;
+    color: vars.$button-color;
+}
+

@@ -1,0 +1,121 @@
+.dashboard {
+  background-color: #1f2937;
+  position: fixed;
+  height: 100vh;
+  width: 20%;
+  top: 0;
+  text-align: left;
+}
+.dashboard h1 {
+  padding-left: 26px;
+}
+.dashboard ul {
+  list-style: none;
+  padding-top: 12%;
+}
+.dashboard ul li {
+  margin-top: 13%;
+  font-size: 1.5em;
+}
+
+.dashboard-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 105%;
+  font-size: 1.4em;
+}
+
+body {
+  background-color: #1a202c;
+  font: 100% Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 50% 20% 60% 80%;
+  gap: 1.5em;
+  height: 100vh;
+  margin-left: 22%;
+  margin-right: 2%;
+}
+
+.grid-item {
+  background-color: #1f2937;
+  border-radius: 1em;
+}
+
+.white, .item2, .item3, .item4, .item5 {
+  color: #ffffff;
+}
+
+.off-white {
+  color: #cccccc;
+}
+
+.item1 {
+  grid-area: 1/1/2/5;
+}
+
+.item2, .item3, .item4, .item5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+}
+
+.item6 {
+  grid-area: 3/1/4/3;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.item7 {
+  grid-area: 3/3/4/5;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.item8 {
+  grid-area: 4/1/5/5;
+}
+
+.overview {
+  margin-left: 22%;
+}
+
+.red {
+  color: red;
+}
+
+.profile-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+#sq {
+  align-self: start;
+  padding-left: 20%;
+}
+
+#age-chart, #gender-chart {
+  margin-top: 2rem;
+  height: 100%;
+}
+
+a:visited, a {
+  text-decoration: none;
+  color: #cccccc;
+}
+
+/*# sourceMappingURL=overview.css.map */

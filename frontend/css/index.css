@@ -1,0 +1,53 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 100vh;
+  background-color: #1a202c;
+  font: 100% Arial, Helvetica, sans-serif;
+}
+
+.form-container {
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20%;
+  height: 35%;
+  background-color: #1f2937;
+  padding: 20px;
+}
+
+.white {
+  color: #ffffff;
+}
+
+.off-white {
+  color: #cccccc;
+}
+
+input[type=submit] {
+  background-color: #3399ff;
+}
+
+input {
+  width: 100%;
+  height: 10em;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+label {
+  align-self: start;
+}
+
+a:visited, a {
+  text-decoration: none;
+  color: #3399ff;
+}
+
+/*# sourceMappingURL=index.css.map */
