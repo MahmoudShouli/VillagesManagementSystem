@@ -5,29 +5,33 @@ function Layout() {
   return (
     <div className="w-1/6 bg-form min-h-screen flex flex-col justify-between">
       <div>
-        <h1 className="text-3xl font-bold p-7 mb-10">Dashboard</h1>
+        <h1 className="text-3xl font-bold p-7 mb-10 text">Dashboard</h1>
         <nav>
           <ul className="[&>*]:p-4 [&>*]:text-gray-400 [&>*]:font-semibold">
-            <li className="hover:bg-[#2d3748]">
-              <Link to="/NoPage" className="hover:text-gray-200 text-lg">
-                Overview
-              </Link>
-            </li>
-            <li className="hover:bg-[#2d3748]">
-              <Link to="/Village" className="hover:text-gray-200 text-lg">
-                Village Management
-              </Link>
-            </li>
-            <li className="hover:bg-[#2d3748]">
-              <Link to="/NoPage" className="hover:text-gray-200 text-lg">
-                Chat
-              </Link>
-            </li>
-            <li className="hover:bg-[#2d3748]">
-              <Link to="/Gallery" className="hover:text-gray-200 text-lg">
-                Gallery
-              </Link>
-            </li>
+            <Link
+              to="/NoPage"
+              className="hover:text-gray-200 text-lg w-full flex hover:bg-[#2d3748]"
+            >
+              Overview
+            </Link>
+            <Link
+              to="/Village"
+              className="hover:text-gray-200 text-lg w-full flex hover:bg-[#2d3748]"
+            >
+              Village Management
+            </Link>
+            <Link
+              to="/NoPage"
+              className="hover:text-gray-200 text-lg w-full flex hover:bg-[#2d3748]"
+            >
+              Chat
+            </Link>
+            <Link
+              to="/Gallery"
+              className="hover:text-gray-200 text-lg w-full flex hover:bg-[#2d3748]"
+            >
+              Gallery
+            </Link>
           </ul>
         </nav>
       </div>
