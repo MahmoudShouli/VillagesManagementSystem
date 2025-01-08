@@ -73,6 +73,7 @@ input {
 .available-admins {
   background-color: #1f2937;
   width: 100%;
+  height: -moz-fit-content;
   height: fit-content;
   border-radius: 8px;
   box-shadow: none;
@@ -138,6 +139,7 @@ img {
 
 #send-btn {
   background-color: #3399ff;
+  width: -moz-fit-content;
   width: fit-content;
   height: 3em;
   border-radius: 8px;
@@ -148,6 +150,4 @@ img {
 a:visited, a {
   text-decoration: none;
   color: #cccccc;
-}
-
-/*# sourceMappingURL=chat.css.map */
+}/*# sourceMappingURL=chat.css.map */

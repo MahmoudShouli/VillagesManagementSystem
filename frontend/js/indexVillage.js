@@ -67,7 +67,8 @@ function formFun(who, id) {
         content.appendChild(btn);
         popUpShow();
     } else if (who.localeCompare("delete") === 0) {
-
+        console.log(id.parentElement.parentElement);
+        id.parentElement.parentElement.remove();
     } else if (who.localeCompare("data") === 0) {
         document.getElementById('popH2').innerText = 'Add Demographic Data for ' + 'Jabalia';
         let fields = [["", "Population Size:"], ["e.g., 0-14: 30%, 65+: 10%", "Age Distribution:"], ["e.g., Male: 51%, Female: 49%", "Gender Ratios:"], ["", "Population Growth Rate:"]];
@@ -102,7 +103,49 @@ function formFun(who, id) {
 }
 
 function addNewVillage() {
-    console.log("AddNewVillage");
+    var villageName = document.getElementById('VillageName').value;
+    var region = document.getElementById('RegionDistrict').value;
+    var landArea = document.getElementById('LandAreasqkm').value;
+    var latitude = document.getElementById('Latitude').value;
+    var longitude = document.getElementById('Longitude').value;
+    var image = document.getElementById('UploadImage').value;
+    var tags = document.getElementById('CategoriesTags').value;
+
+    let villagelist = document.getElementById('villagesList');
+    let divcom = document.createElement('div');
+    divcom.classList.add('villageCom');
+
+    let par = document.createElement('p');
+    par.classList.add('villageName');
+    par.innerText = villageName + " - " + region;
+
+    let divbtn = document.createElement('div');
+    divbtn.classList.add('villageBtn');
+
+    let btnview = document.createElement('button');
+    btnview.setAttribute("onclick", "formFun('view', 'id')");
+    btnview.innerText = 'View';
+    divbtn.appendChild(btnview);
+
+    let btnupdate = document.createElement('button');
+    btnupdate.setAttribute("onclick", "formFun('update', 'id')");
+    btnupdate.innerText = 'Update Village';
+    divbtn.appendChild(btnupdate);
+
+    let btndelete = document.createElement('button');
+    btndelete.setAttribute("onclick", "formFun('delete', this)");
+    btndelete.innerText = 'Delete Village';
+    divbtn.appendChild(btndelete);
+
+    let btndata = document.createElement('button');
+    btndata.setAttribute("onclick", "formFun('data', 'id')");
+    btndata.innerText = 'Update Demographic Data';
+    divbtn.appendChild(btndata);
+
+    divcom.appendChild(par);
+    divcom.appendChild(divbtn);
+
+    villagelist.appendChild(divcom);   console.log("AddNewVillage");
     popUpHide();
 }
 
@@ -150,7 +193,7 @@ window.onload = function () {
     divbtn.appendChild(btnupdate);
 
     let btndelete = document.createElement('button');
-    btndelete.setAttribute("onclick", "formFun('delete', 'id')");
+    btndelete.setAttribute("onclick", "formFun('delete', this)");
     btndelete.innerText = 'Delete Village';
     divbtn.appendChild(btndelete);
 
