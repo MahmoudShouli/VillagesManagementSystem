@@ -26,7 +26,7 @@ function AddNewImage({ onClose }) {
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
       <div className="bg-[#37404d] p-5 rounded-md flex flex-col items-center w-1/2">
         <div className="flex items-center justify-between w-full mb-2">
-          <h1 className="text-xl font-bold">Add New Village</h1>
+          <h1 className="text-xl font-bold">Add New Image</h1>
           <button onClick={onClose}>
             <FontAwesomeIcon icon={faXmark} />
           </button>
