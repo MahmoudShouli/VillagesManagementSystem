@@ -3,7 +3,7 @@ import profileImage from '../assets/profile.png'
 
 function Dashboard() {
     return (
-        <div className="fixed w-1/6 bg-secondary min-h-screen flex flex-col justify-between">
+        <div className="min-w-[17%] sticky top-0  bg-secondary min-h-screen max-h-screen flex flex-col justify-between">
             <div>
                 <h1 className="text-3xl font-bold p-7 mb-10 text-white">Dashboard</h1>
                 <nav>
@@ -21,7 +21,7 @@ function Dashboard() {
                             Village Management
                         </Link>
                         <Link
-                        to="/NoPage"
+                        to="/ChatPage"
                         className="hover:text-gray-200 text-lg w-full flex hover:bg-[#2d3748]"
                         >
                             Chat

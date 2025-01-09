@@ -43,7 +43,7 @@ function Overview() {
     return (
         <div className="flex min-h-screen bg-primary">
             <Dashboard />
-            <div className="flex-grow p-5 ml-80">
+            <div className="flex-grow p-5">
                 <h1 className="text-2xl font-bold text-white mb-4">Overview</h1>
 
                 <div className="bg-secondary rounded-lg shadow-lg p-2">
