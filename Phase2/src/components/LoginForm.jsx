@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function LoginForm() {
     return (
         <div className="w-full max-w-sm p-6 bg-secondary rounded-lg shadow-lg">
@@ -25,12 +27,15 @@ function LoginForm() {
                 placeholder="Enter your password"
                 />
             </div>
+            <Link
+            to="/Overview">
             <button
                 className="w-full px-4 py-2 text-white bg-button rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                 type="submit"
             >
                 Login
             </button>
+            </Link>
             </form>
             <p className="mt-4 text-center text-sm text-gray-400">
                 Dont have an account?{" "}
@@ -39,7 +44,7 @@ function LoginForm() {
             </a>
             </p>
         </div>
-    );
+    )
 }
 
-export default LoginForm;
+export default LoginForm
