@@ -20,14 +20,16 @@ function Gallery() {
         </button>
         <div className="grid grid-cols-3 gap-4">
           {images.map((image, index) => (
-            <div className="flex flex-col p-4 bg-[#4a5568] rounded-md">
+            <div
+              key={index}
+              className="flex flex-col p-4 bg-[#4a5568] rounded-md break-all"
+            >
               <img
-                key={index}
                 src={image[0]}
                 alt="Gallery Image"
                 className="w-full h-64 object-cover rounded-md mb-1"
               />
-              <p>{image[1]}</p>
+              <p className="w-full">{image[1]}</p>
             </div>
           ))}
         </div>

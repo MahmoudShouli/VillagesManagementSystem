@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Link } from "react-router-dom";
 
 function Layout() {
   return (
-    <div className="w-1/6 bg-form min-h-screen flex flex-col justify-between">
+    <div className="min-w-[17%] bg-form min-h-screen flex flex-col justify-between sticky top-0 max-h-screen">
       <div>
         <h1 className="text-3xl font-bold p-7 mb-10 text">Dashboard</h1>
         <nav>
