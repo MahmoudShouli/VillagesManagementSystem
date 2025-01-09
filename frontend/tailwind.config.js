@@ -12,6 +12,9 @@ export default {
           hover: "#2372f6",
         },
         form: '#1f2937',
+        primary: '#1a202c',
+        secondary: '#1f2937',
+        button: '#3c82f6', 
       }
     },
   },

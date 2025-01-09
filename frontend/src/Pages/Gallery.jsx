@@ -1,5 +1,5 @@
 import { useState, useContext, createContext } from "react";
-import Layout from "./Layout.jsx";
+import Dashboard from "../Components/Dashboard.jsx";
 import AddNewImage from "../Components/AddNewImage.jsx";
 
 export const GalleryContext = createContext();
@@ -10,7 +10,7 @@ function Gallery() {
 
   return (
     <div className="flex">
-      <Layout />
+      <Dashboard />
       <div className="flex flex-col m-5">
         <button
           className="bg-[#4a5568] hover:bg-[#3e4857] p-2 px-4 rounded-md mb-5 w-fit"
