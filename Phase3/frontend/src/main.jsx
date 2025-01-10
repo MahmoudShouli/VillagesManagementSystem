@@ -1,9 +1,9 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import LoginPage from "./pages/LoginPage"
-import Overview from "./pages/Overview"
-import ChatPage from "./pages/ChatPage"
+import LoginPage from "./pages/LoginPage.jsx"
+import Overview from "./pages/Overview.jsx"
+import ChatPage from "./pages/ChatPage.jsx"
 import Gallery from "./pages/Gallery.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import Village from "./pages/Village.jsx";
