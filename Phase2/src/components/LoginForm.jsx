@@ -39,9 +39,11 @@ function LoginForm() {
             </form>
             <p className="mt-4 text-center text-sm text-gray-400">
                 Dont have an account?{" "}
-            <a href="#" className="text-button hover:underline">
-                Sign up
-            </a>
+            <Link to='/SignUp'>
+                <span className="text-button hover:underline">
+                    Sign up
+                </span>
+            </Link>
             </p>
         </div>
     )

@@ -15,7 +15,7 @@ function Dashboard() {
                             Overview
                         </Link>
                         <Link
-                        to="/NoPage"
+                        to="/Village"
                         className="hover:text-gray-200 text-lg w-full flex hover:bg-[#2d3748]"
                         >
                             Village Management
@@ -27,7 +27,7 @@ function Dashboard() {
                             Chat
                         </Link>
                         <Link
-                        to="/NoPage"
+                        to="/Gallery"
                         className="hover:text-gray-200 text-lg w-full flex hover:bg-[#2d3748]"
                         >
                             Gallery

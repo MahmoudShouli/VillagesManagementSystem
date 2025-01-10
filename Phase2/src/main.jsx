@@ -4,6 +4,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import LoginPage from "./pages/LoginPage"
 import Overview from "./pages/Overview"
 import ChatPage from "./pages/ChatPage"
+import Gallery from "./pages/Gallery.jsx";
+import SignUp from "./pages/SignUp.jsx";
+import Village from "./pages/Village.jsx";
 import "./index.css"
 
 
@@ -14,6 +17,9 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<LoginPage />} />
         <Route path="/Overview" element={<Overview />} />
         <Route path="/ChatPage" element={<ChatPage />} />
+        <Route path="/SignUp"  element={<SignUp />} />
+        <Route path="/Village" element={<Village />} />
+        <Route path="/Gallery" element={<Gallery />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
