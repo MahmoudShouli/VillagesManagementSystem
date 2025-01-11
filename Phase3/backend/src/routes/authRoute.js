@@ -1,5 +1,5 @@
 import express from 'express'
-import Admin from '../models/Admin.js'
+import Admin from '../models/AdminModel.js'
 
 const router = express.Router()
 
