@@ -1,25 +1,33 @@
 import GeneralModel from '../models/GeneralInfoModel.js'
 import ChartModel from '../models/ChartsModel.js'
+import AdminModel from '../models/AdminModel.js'
 
 export const resolvers = {
     Query: {
         generalInfo: async () => {
             try {
-                const generalInfo = await GeneralModel.findOne();
-                return generalInfo;
+                const generalInfo = await GeneralModel.findOne()
+                return generalInfo
             } catch (error) {
-                console.error('Error fetching general info:', error);
-                throw new Error('Failed to fetch general info');
+                throw new Error('Failed to fetch general info')
             }
         },
         chart: async () => {
             try {
-                const chartData = await ChartModel.findOne();
-                return chartData;
+                const chartData = await ChartModel.findOne()
+                return chartData
             } catch (error) {
-                console.error('Error fetching chart data:', error);
-                throw new Error('Failed to fetch chart data');
+                throw new Error('Failed to fetch chart data')
             }
         },
+        admins: async() => {
+            try {
+                const admins = await AdminModel.find()
+                return admins
+            } catch (error) {
+                throw new Error('Failed to fetch chart data')
+            }
+        }
+
     },
-};
+}

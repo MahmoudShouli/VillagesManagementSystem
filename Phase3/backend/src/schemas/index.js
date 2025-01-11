@@ -1,6 +1,12 @@
 import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
+    type Admin {
+        id: ID
+        fullName: String
+        userName: String
+        password: String
+    }
     type GeneralInfo {
         villages: Int
         urban: Int
@@ -17,5 +23,6 @@ export const typeDefs = gql`
     type Query {
         generalInfo: GeneralInfo
         chart: Chart
+        admins: [Admin]
     }
 `;
