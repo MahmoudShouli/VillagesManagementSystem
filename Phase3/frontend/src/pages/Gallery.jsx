@@ -1,12 +1,30 @@
 import { useState, createContext } from "react";
 import Dashboard from "../components/Dashboard.jsx";
 import AddNewImage from "../components/AddNewImage.jsx";
+import getGallery from "../api/apiGallery.js";
 
 export const GalleryContext = createContext();
 
 function Gallery() {
+  const getAllGallery = async () => {
+    try {
+      const response = await getGallery();
+      let image = [];
+      response.map((item) => {
+        image.push([item.URL, item.Description]);
+      });
+      return image;
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   const [images, setImages] = useState([]);
   const [PopUp, setPopUp] = useState(false);
+
+  if (images.length === 0) {
+    getAllGallery().then((data) => setImages(data));
+  }
 
   return (
     <div className="flex">
