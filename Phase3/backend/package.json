@@ -1,8 +1,11 @@
 {
   "dependencies": {
+    "@graphql-tools/merge": "^9.0.17",
+    "apollo-server-express": "^3.13.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "graphql": "^16.10.0",
     "mongoose": "^8.9.4"
   },
   "name": "backend",
