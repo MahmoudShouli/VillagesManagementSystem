@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { login } from '../apiService';
+import { useAdmin } from "../AdminContext";
 
 function LoginForm() {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
     const navigate = useNavigate()
+    const { setAdmin } = useAdmin()
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -16,8 +18,9 @@ function LoginForm() {
         const data = await login(username, password)
         let fullName = ""
         if(data) {
-            fullName = data.fullName
+            fullName = data.fullname
             setError("")
+            setAdmin(fullName)
             navigate('Overview')
         } else {
             setError("Invalid username or password")
