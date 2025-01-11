@@ -34,7 +34,7 @@ function Admins({ onAdminSelect, searchVal = "" }) {
 
 
     const filteredAdmins = admins.filter((admin) =>
-        admin.fullName.toLowerCase().includes(searchVal.toLowerCase()) && admin.fullName != currentAdmin
+        admin.fullName.toLowerCase().startsWith(searchVal.toLowerCase()) && admin.fullName != currentAdmin
     )
 
     return (
