@@ -1,6 +1,8 @@
 import { gql } from 'apollo-server-express';
 
 export const typeDefs = gql`
+    scalar Date
+
     type Admin {
         id: ID
         fullName: String
@@ -20,9 +22,18 @@ export const typeDefs = gql`
         bar: [Int]
     }
 
+    type Message {
+        sender: String
+        senderFullName: String
+        receiver: String
+        content: String
+        timestamp: Date
+    }
+
     type Query {
         generalInfo: GeneralInfo
         chart: Chart
         admins: [Admin]
+        messages(sender: String, receiver: String): [Message]
     }
 `;

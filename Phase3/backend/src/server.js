@@ -4,8 +4,8 @@ import dotenv from 'dotenv'
 import authRouter from './routes/authRoute.js'
 import cors from 'cors'
 import { ApolloServer } from 'apollo-server-express'
-import { typeDefs } from './schemas/index.js'
-import { resolvers } from './resolvers/index.js'
+import { typeDefs } from './schemas/schema.js'
+import { resolvers } from './resolvers/resolver.js'
 
 dotenv.config({path: '../.env'})
 connectDB()   
