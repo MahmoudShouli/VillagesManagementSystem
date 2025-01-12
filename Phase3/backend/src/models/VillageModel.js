@@ -9,8 +9,8 @@ const VillageSchema = mongoose.Schema({
     Path: { type: String },
     Categories: { type: String },
     Populationsize: { type: String },
-    Agedistribution: { type: [String, Number] },
-    Genderratios: { type: [String, Number] },
+    Agedistribution: { type: String },
+    Genderratios: { type: String },
     Populationgrowth: { type: String },
 })
 

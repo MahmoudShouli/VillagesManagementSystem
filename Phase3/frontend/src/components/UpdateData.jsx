@@ -2,15 +2,16 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
-import { VillageContext, VillageIndex } from "../pages/Village";
+import Village, { VillageContext, VillageIndex } from "../pages/Village";
+import { updateDemoData } from "../api/apiVillage";
 
 function UpdateData({ onClose }) {
-  const { VillageList } = useContext(VillageContext);
+  const { VillageList, setVillageList } = useContext(VillageContext);
   const { Idx } = useContext(VillageIndex);
-  let PopulationSize = 0;
-  let AgeDistribution = [];
-  let GenderRatios = [];
-  let PopulationGrowthRate = 0;
+  let PopulationSize = VillageList[Idx][7];
+  let AgeDistribution = VillageList[Idx][8];
+  let GenderRatios = VillageList[Idx][9];
+  let PopulationGrowthRate = VillageList[Idx][10];
 
   function handlePopulationSizeChange(event) {
     PopulationSize = event.target.value;
@@ -25,10 +26,30 @@ function UpdateData({ onClose }) {
     PopulationGrowthRate = event.target.value;
   }
 
-  const btnClose = () => {
+  const btnClose = (e) => {
+    e.preventDefault();
     // eslint-disable-next-line no-undef
-    if (!PopulationSize || !AgeDistribution || !GenderRatios || !Population)
+    if (
+      !PopulationSize ||
+      !AgeDistribution ||
+      !GenderRatios ||
+      !PopulationGrowthRate
+    )
       return;
+    setVillageList((prev) => {
+      prev[Idx][7] = PopulationSize;
+      prev[Idx][8] = AgeDistribution;
+      prev[Idx][9] = GenderRatios;
+      prev[Idx][10] = PopulationGrowthRate;
+      return prev;
+    });
+    updateDemoData(
+      VillageList[Idx][0],
+      PopulationSize,
+      AgeDistribution,
+      GenderRatios,
+      PopulationGrowthRate
+    );
     onClose();
   };
 

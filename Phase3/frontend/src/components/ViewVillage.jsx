@@ -22,9 +22,10 @@ function ViewVillage({ onClose }) {
           <p>Land Area (sq km): {VillageList[Idx][2]}</p>
           <p>Latitude: {VillageList[Idx][3]}</p>
           <p>Longitude: {VillageList[Idx][4]}</p>
-          <p>Tags: {VillageList[Idx][5]}</p>
+          <p>Tags: {VillageList[Idx][6]}</p>
           <img
-            src={VillageList[Idx][6]}
+            // src={VillageList[Idx][5]}
+            src="https://www.ui.se/globalassets/utrikesmagasinet/analyser/2017/maj/jerusalem-.jpg"
             alt="Village Image"
             className="mt-4 rounded-md"
           />

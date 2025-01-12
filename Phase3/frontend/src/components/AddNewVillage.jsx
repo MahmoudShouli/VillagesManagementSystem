@@ -1,7 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
-import  { VillageContext } from "../pages/Village";
+import { VillageContext } from "../pages/Village";
+import { addVillage } from "../api/apiVillage";
+import { useState } from "react";
 
 // eslint-disable-next-line react/prop-types
 function AddNewImage({ onClose }) {
@@ -12,6 +14,7 @@ function AddNewImage({ onClose }) {
   let Longitude = "";
   let Categories = "";
   let Photo = null;
+  const [error, setError] = useState("");
 
   function handleVillageNameChange(event) {
     VillageName = event.target.value;
@@ -47,10 +50,38 @@ function AddNewImage({ onClose }) {
       !Categories
     )
       return;
+    const response = addVillage(
+      VillageName,
+      Region,
+      LandArea,
+      Latitude,
+      Longitude,
+      Photo.name,
+      Categories
+    );
     setVillageList([
       ...VillageList,
-      [VillageName, Region, LandArea, Latitude, Longitude, Categories, Photo],
+      [
+        VillageName,
+        Region,
+        LandArea,
+        Latitude,
+        Longitude,
+        Photo.name,
+        Categories,
+        "",
+        "",
+        "",
+        "",
+      ],
     ]);
+    response.then((data) => {
+      if (data === null) {
+        setError("Village Name is Used");
+        return;
+      }
+      setError("");
+    });
     onClose();
   };
 
@@ -137,6 +168,11 @@ function AddNewImage({ onClose }) {
           >
             Add Village
           </button>
+          {error !== "" && (
+            <p className="mt-2 text-red-600 text-lg font-semibold text-center">
+              {error}
+            </p>
+          )}
         </form>
       </div>
     </div>

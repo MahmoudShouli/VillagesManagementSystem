@@ -1,9 +1,10 @@
-import { useState,  createContext } from "react";
+import { useState, createContext } from "react";
 import Dashboard from "../components/Dashboard.jsx";
 import AddNewVillage from "../components/AddNewVillage.jsx";
 import ViewVillage from "../components/ViewVillage.jsx";
 import UpdateVillage from "../components/UpdateVillage.jsx";
 import UpdateData from "../components/UpdateData.jsx";
+import getVillages, { deleteVillage } from "../api/apiVillage.js";
 
 export var VillageContext = createContext();
 export var VillageIndex = createContext();
@@ -15,6 +16,35 @@ function Village() {
   const [UpdateVillagePop, setUpdateVillagePop] = useState(false);
   const [UpdateDataPop, setUpdateDataPop] = useState(false);
   const [Idx, setIdx] = useState(0);
+
+  const getAllVillages = async () => {
+    try {
+      const response = await getVillages();
+      let villages = [];
+      response.map((item) => {
+        villages.push([
+          item.Name,
+          item.Region,
+          item.Area,
+          item.Latitude,
+          item.Longitude,
+          item.Path,
+          item.Categories,
+          item.Populationsize,
+          item.Agedistribution,
+          item.Genderratios,
+          item.Populationgrowth,
+        ]);
+      });
+      return villages;
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  if (VillageList.length === 0) {
+    getAllVillages().then((data) => setVillageList(data));
+  }
 
   return (
     <div className="flex">
@@ -32,6 +62,18 @@ function Village() {
             type="text"
             placeholder="Search villages..."
             className="input-primary-form bg-[#374151] border-[1px] border-[#4a5568]"
+            onChange={(value) => {
+              if (value.target.value === "") {
+                getAllVillages().then((data) => setVillageList(data));
+              } else {
+                const newVillageList = VillageList.filter((village) =>
+                  village[0]
+                    .toLowerCase()
+                    .includes(value.target.value.toLowerCase())
+                );
+                setVillageList(newVillageList);
+              }
+            }}
           />
           <div className="flex justify-between items-center">
             <label className="text-sm">
@@ -70,7 +112,9 @@ function Village() {
                 key={index}
                 className="flex justify-between items-center bg-[#374151] rounded-md p-3 mb-2"
               >
-                <p className="text-sm text-gray-200">{village[0]}</p>
+                <p className="text-sm text-gray-200">
+                  {village[0] + " - " + village[1]}
+                </p>
                 <div className="flex items-center">
                   <button
                     onClick={() => {
@@ -96,6 +140,7 @@ function Village() {
                         (v, i) => i !== index
                       );
                       setVillageList(newVillageList);
+                      deleteVillage(VillageList[index][0]);
                     }}
                     className="bg-[#718096] hover:bg-[#677589] rounded-md py-1 px-2 text-sm mr-1"
                   >
