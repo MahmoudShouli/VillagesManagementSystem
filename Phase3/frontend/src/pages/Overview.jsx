@@ -2,43 +2,65 @@ import Dashboard from "../components/Dashboard";
 import Map from "../components/Map";
 import Card from "../components/Card";
 import Chart from "../components/Chart";
+import { useQuery, gql } from '@apollo/client';
+
+const GET_OVERVIEW_DATA = gql`
+    query GetOverviewData {
+        generalInfo {
+            villages
+            urban
+            popSize
+            avgArea
+        }
+        chart {
+            age
+            gender
+            bar
+        }
+    }
+`;
 
 function Overview() {
+    const { loading, error, data } = useQuery(GET_OVERVIEW_DATA);
+
+    if (loading) return <p className="text-white">Loading...</p>;
+    if (error) return <p className="text-red-500">Error: {error.message}</p>;
+
+    
+    const { generalInfo, chart } = data;
 
     const ageData = {
         labels: ["0-18", "19-35", "36-50", "51-65", "65+"],
         datasets: [
             {
                 label: "Age Distribution",
-                data: [55, 49, 44, 24, 15],
-                backgroundColor: ["#a74c65","#2f71a3","#a58c4d","#3c8489","#9B59B6"], 
+                data: chart.age, 
+                backgroundColor: ["#a74c65", "#2f71a3", "#a58c4d", "#3c8489", "#9B59B6"],
             },
         ],
-    }
+    };
 
     const genderData = {
         labels: ["Male", "Female"],
         datasets: [
             {
                 label: "Gender Ratios",
-                data: [65, 35],
-                backgroundColor: ["#2f71a3","#a74c65"], 
-            },
-        ],
-    }
-
-
-    const popultionData = {
-        labels: ["Jabalia", "Beit Lahia", "Quds", "Shejaiya", "Hebron", "Nablus", "Ramallah", "Beit Jala"],
-        datasets: [
-            {
-                label: "Population",
-                data: [50000, 30000, 20000, 40000, 250000, 150000, 100000, 25000],
-                backgroundColor: "rgba(128, 255, 212, 0.5)"
+                data: chart.gender,
+                backgroundColor: ["#2f71a3", "#a74c65"],
             },
         ],
     };
 
+    const populationData = {
+        labels: ["Jabalia", "Beit Lahia", "Quds", "Shejaiya", "Hebron", "Nablus", "Ramallah", "Beit Jala"],
+        datasets: [
+            {
+                label: "Population",
+                data: chart.bar,
+                backgroundColor: "rgba(128, 255, 212, 0.5)",
+            },
+        ],
+    };
 
     return (
         <div className="flex min-h-screen bg-primary">
@@ -51,18 +73,17 @@ function Overview() {
                 </div>
 
                 <div className="grid grid-cols-4 gap-4">
-                    <Card text="Total Number of Villages" number={8} />
-                    <Card text="Total Number of Urban Areas" number={3} />
-                    <Card text="Total Population Size" number={660000} />
-                    <Card text="Average Land Area" number={"11.88 sq km"} />
+                    <Card text="Total Number of Villages" number={generalInfo.villages} />
+                    <Card text="Total Number of Urban Areas" number={generalInfo.urban} />
+                    <Card text="Total Population Size" number={generalInfo.popSize} />
+                    <Card text="Average Land Area" number={generalInfo.avgArea} />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                     <Chart type="Pie" data={ageData} title="Age Distribution" />
                     <Chart type="Pie" data={genderData} title="Gender Ratios" />
-                    <Chart type="Bar" data={popultionData} title="" className="col-span-2 h-screen"/>
+                    <Chart type="Bar" data={populationData} title="Population Distribution" className="col-span-2 h-screen" />
                 </div>
-
             </div>
         </div>
     );

@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom"
 import profileImage from '../assets/profile.png'
+import { useAdmin } from "../AdminContext"
 
 function Dashboard() {
+
+    const { admin } = useAdmin()
+
     return (
         <div className="min-w-[17%] sticky top-0  bg-secondary min-h-screen max-h-screen flex flex-col justify-between">
             <div>
@@ -42,7 +46,7 @@ function Dashboard() {
                         alt="Profile"
                         className="w-16 h-16 rounded-full mr-2"
                     />
-                    <p className="text-white text-lg">Mahmoud Shouli</p>
+                    <p className="text-white text-lg">{admin}</p>
                 </div>
                 <Link to="/" className="text-red-600  text-xl  hover:text-red-500">
                     Logout
