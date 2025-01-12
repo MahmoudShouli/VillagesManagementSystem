@@ -1,26 +1,33 @@
-import express from'express'
-import connectDB from './config/db.js'
-import dotenv from 'dotenv'
-import authRouter from './routes/authRoute.js'
-import cors from 'cors'
-import { ApolloServer } from 'apollo-server-express'
-import { typeDefs } from './schemas/schema.js'
-import { resolvers } from './resolvers/resolver.js'
+import express from 'express';
+import http from 'http';
+import cors from 'cors';
+import { ApolloServer } from 'apollo-server-express';
+import { typeDefs } from './schemas/schema.js';
+import { resolvers } from './resolvers/resolver.js';
+import authRouter from './routes/authRoute.js';
+import configureSocket from './config/socket.js';
 
-dotenv.config({path: '../.env'})
-connectDB()   
-const PORT = process.env.PORT
-const app = express()
+const startServer = async () => {
+    const app = express();
+    const PORT = process.env.PORT || 5000;
 
-const apolloServer = new ApolloServer({ typeDefs, resolvers })
+    
+    app.use(cors({ origin: ['http://localhost:5173', 'http://localhost:5174'] }));
+    app.use(express.json());
+    app.use('/api', authRouter);
 
-await apolloServer.start()
-apolloServer.applyMiddleware({ app })
+    
+    const apolloServer = new ApolloServer({ typeDefs, resolvers });
+    await apolloServer.start();
+    apolloServer.applyMiddleware({ app });
 
-app.use(cors({ origin: ['http://localhost:5173', 'http://localhost:5174']}))
-app.use(express.json()) 
-app.use('/api', authRouter)
 
-app.listen( PORT, () => {
-    console.log(`Server running at http://localhost:${PORT}${apolloServer.graphqlPath}`)
-})
+    const server = http.createServer(app);
+    configureSocket(server);
+
+    server.listen(PORT, () => {
+        console.log(`Server listening at http://localhost:${PORT}${apolloServer.graphqlPath}`);
+    });
+};
+
+export default startServer;
