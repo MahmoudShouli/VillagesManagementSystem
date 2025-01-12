@@ -21,6 +21,7 @@ const dateScalar = new GraphQLScalarType({
     },
 })
 
+
 export const resolvers = {
     Date: dateScalar, 
     Query: {
@@ -75,5 +76,40 @@ export const resolvers = {
                 throw new Error('Failed to fetch sender full name');
             }
         }
+    },
+
+    Mutation: {
+        createMessage: async (parent, args) => {
+            try {
+                let { sender, receiver, content, timestamp } = args;
+
+                const senderNeeded = await AdminModel.findOne({fullName: sender})
+                const receiverNeeded = await AdminModel.findOne({fullName: receiver})
+
+                sender = senderNeeded.userName
+                receiver = receiverNeeded.userName
+    
+
+                
+                if (!sender || !receiver || !content) {
+                    throw new Error("All fields (sender, receiver, content) are required.");
+                }
+    
+                const newMessage = new MessageModel({
+                    sender,
+                    receiver,
+                    content,
+                    timestamp: timestamp || new Date(),
+                });
+    
+                
+                const savedMessage = await newMessage.save();
+    
+                
+                return savedMessage;
+            } catch (error) {
+                throw new Error("Failed to create message");
+            }
+        },
     }
 }

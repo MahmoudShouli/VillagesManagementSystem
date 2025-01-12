@@ -36,4 +36,8 @@ export const typeDefs = gql`
         admins: [Admin]
         messages(sender: String, receiver: String): [Message]
     }
+
+    type Mutation {
+        createMessage (sender: String, receiver: String, content: String, timestamp: Date): Message
+    }
 `;
