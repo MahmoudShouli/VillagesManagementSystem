@@ -2,15 +2,42 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
-import { VillageContext, VillageIndex } from "../pages/Village";
+import Village, { VillageContext, VillageIndex } from "../pages/Village";
+import { useMutation, gql } from "@apollo/client";
+
+const UPDATE_DATA = gql`
+  mutation UpdateData(
+    $Name: String
+    $Populationsize: String!
+    $Agedistribution: String
+    $Genderratios: String
+    $Populationgrowth: String!
+  ) {
+    updateData(
+      Name: $Name
+      Populationsize: $Populationsize
+      Agedistribution: $Agedistribution
+      Genderratios: $Genderratios
+      Populationgrowth: $Populationgrowth
+    ) {
+      Name
+      Populationsize
+      Agedistribution
+      Genderratios
+      Populationgrowth
+    }
+  }
+`;
 
 function UpdateData({ onClose }) {
-  const { VillageList } = useContext(VillageContext);
+  const { VillageList, setVillageList } = useContext(VillageContext);
   const { Idx } = useContext(VillageIndex);
-  let PopulationSize = 0;
-  let AgeDistribution = [];
-  let GenderRatios = [];
-  let PopulationGrowthRate = 0;
+  let PopulationSize = VillageList[Idx][7];
+  let AgeDistribution = VillageList[Idx][8];
+  let GenderRatios = VillageList[Idx][9];
+  let PopulationGrowthRate = VillageList[Idx][10];
+
+  const [updateData] = useMutation(UPDATE_DATA);
 
   function handlePopulationSizeChange(event) {
     PopulationSize = event.target.value;
@@ -25,10 +52,31 @@ function UpdateData({ onClose }) {
     PopulationGrowthRate = event.target.value;
   }
 
-  const btnClose = () => {
+  const btnClose = (e) => {
     // eslint-disable-next-line no-undef
-    if (!PopulationSize || !AgeDistribution || !GenderRatios || !Population)
+    if (
+      !PopulationSize ||
+      !AgeDistribution ||
+      !GenderRatios ||
+      !PopulationGrowthRate
+    )
       return;
+    setVillageList((prev) => {
+      prev[Idx][7] = PopulationSize;
+      prev[Idx][8] = AgeDistribution;
+      prev[Idx][9] = GenderRatios;
+      prev[Idx][10] = PopulationGrowthRate;
+      return prev;
+    });
+    updateData({
+      variables: {
+        Name: VillageList[Idx][0],
+        Populationsize: PopulationSize,
+        Agedistribution: AgeDistribution,
+        Genderratios: GenderRatios,
+        Populationgrowth: PopulationGrowthRate,
+      },
+    });
     onClose();
   };
 

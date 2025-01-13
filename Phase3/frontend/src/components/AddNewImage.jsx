@@ -3,48 +3,45 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
 import { GalleryContext } from "../pages/Gallery";
-import { useMutation, gql } from '@apollo/client';
-
+import { useMutation, gql } from "@apollo/client";
 
 const ADD_GALLERY = gql`
-    mutation addNewImage($URL: String, $Description: String) {
-        addGallery(URL: $URL , Description: $Description) {
-            URL
-            Description
-        }
+  mutation AddGallery($URL: String!, $Description: String!) {
+    addGallery(URL: $URL, Description: $Description) {
+      URL
+      Description
     }
+  }
 `;
 
 // eslint-disable-next-line react/prop-types
 function AddNewImage({ onClose }) {
-
   const [createImage] = useMutation(ADD_GALLERY);
 
-  const [ImageURL, setImageURL] = useState('');
-  const [desc, setDesc] = useState('');
-
- 
+  const [ImageURL, setImageURL] = useState("");
+  const [desc, setDesc] = useState("");
 
   const { images, setImages } = useContext(GalleryContext);
 
   const btnClose = async (e) => {
-      e.preventDefault()
-      let tempImg = {
-        URL:ImageURL,
-        Description:desc,
-      };
+    if (!ImageURL || !desc) {
+      return;
+    }
+    let tempImg = [ImageURL, desc];
 
-      
+    setImages([...images, tempImg]);
 
-      setImages((prevImgs) => [...prevImgs, tempImg]);
-
-
-      
-      try {
-          await createImage({ variables: tempImg });
-      } catch (error) {
-          console.error('Error creating message:', error);
-      }
+    try {
+      await createImage({
+        variables: {
+          URL: ImageURL,
+          Description: desc,
+        },
+      });
+      onClose();
+    } catch (error) {
+      console.error("Error creating message:", error);
+    }
   };
 
   return (
@@ -64,7 +61,9 @@ function AddNewImage({ onClose }) {
               type="text"
               className="input-primary-form"
               placeholder="Enter image URL"
-              onChange={(e) => {setImageURL(e.target.value)}}
+              onChange={(e) => {
+                setImageURL(e.target.value);
+              }}
               required
             />
           </label>
@@ -74,7 +73,9 @@ function AddNewImage({ onClose }) {
             <input
               className="input-primary-form"
               placeholder="Enter image description"
-              onChange={(e) => {setDesc(e.target.value)}}
+              onChange={(e) => {
+                setDesc(e.target.value);
+              }}
               required
             />
           </label>

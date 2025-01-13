@@ -1,15 +1,15 @@
 import { useState, createContext } from "react";
 import Dashboard from "../components/Dashboard.jsx";
 import AddNewImage from "../components/AddNewImage.jsx";
-import { useQuery, gql } from '@apollo/client';
+import { useQuery, gql } from "@apollo/client";
 
 const GET_GALLERY = gql`
-    query GetAllImages {
-        getGallery {
-            URL
-            Description
-        }
+  query GetAllImages {
+    getGallery {
+      URL
+      Description
     }
+  }
 `;
 
 export const GalleryContext = createContext();
@@ -20,22 +20,20 @@ function Gallery() {
 
   const { loading, error, data } = useQuery(GET_GALLERY);
 
-  
   if (loading) return <p className="text-white">Loading...</p>;
   if (error) return <p className="text-red-500">Error: {error.message}</p>;
 
+  const addAllImages = () => {
+    let image = [];
+    data.getGallery.map((item) => {
+      image.push([item.URL, item.Description]);
+    });
+    return image;
+  };
 
-  
-  let image = [];
-  data.getGallery.map((item) => {
-    image.push([item.URL, item.Description]);
-  });
-  
   if (images.length === 0) {
-        setImages(image);
+    setImages(addAllImages());
   }
-  
-  
 
   return (
     <div className="flex">
