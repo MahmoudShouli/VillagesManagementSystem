@@ -1,25 +1,50 @@
+/* eslint-disable no-unused-vars */
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { GalleryContext } from "../pages/Gallery";
+import { useMutation, gql } from '@apollo/client';
+
+
+const ADD_GALLERY = gql`
+    mutation addNewImage($URL: String, $Description: String) {
+        addGallery(URL: $URL , Description: $Description) {
+            URL
+            Description
+        }
+    }
+`;
 
 // eslint-disable-next-line react/prop-types
 function AddNewImage({ onClose }) {
-  let ImageURL = "";
-  let Description = "";
 
-  function handleImageURLChange(event) {
-    ImageURL = event.target.value;
-  }
-  function handleDescriptionChange(event) {
-    Description = event.target.value;
-  }
+  const [createImage] = useMutation(ADD_GALLERY);
+
+  const [ImageURL, setImageURL] = useState('');
+  const [desc, setDesc] = useState('');
+
+ 
 
   const { images, setImages } = useContext(GalleryContext);
-  const btnClose = () => {
-    if (!ImageURL || !Description) return;
-    setImages([...images, [ImageURL, Description]]);
-    onClose();
+
+  const btnClose = async (e) => {
+      e.preventDefault()
+      let tempImg = {
+        URL:ImageURL,
+        Description:desc,
+      };
+
+      
+
+      setImages((prevImgs) => [...prevImgs, tempImg]);
+
+
+      
+      try {
+          await createImage({ variables: tempImg });
+      } catch (error) {
+          console.error('Error creating message:', error);
+      }
   };
 
   return (
@@ -39,7 +64,7 @@ function AddNewImage({ onClose }) {
               type="text"
               className="input-primary-form"
               placeholder="Enter image URL"
-              onChange={handleImageURLChange}
+              onChange={(e) => {setImageURL(e.target.value)}}
               required
             />
           </label>
@@ -49,7 +74,7 @@ function AddNewImage({ onClose }) {
             <input
               className="input-primary-form"
               placeholder="Enter image description"
-              onChange={handleDescriptionChange}
+              onChange={(e) => {setDesc(e.target.value)}}
               required
             />
           </label>

@@ -3,6 +3,7 @@ import GeneralModel from '../models/GeneralInfoModel.js'
 import ChartModel from '../models/ChartsModel.js'
 import AdminModel from '../models/AdminModel.js'
 import MessageModel from '../models/MessageModel.js'
+import GalleryModel from '../models/GalleryModel.js'
 
 const dateScalar = new GraphQLScalarType({
     name: 'Date',
@@ -64,7 +65,16 @@ export const resolvers = {
             } catch (error) {
                 throw new Error('Failed to fetch messages')
             }
-        }
+        },
+        getGallery: async () => {
+            try {
+                const galleryData = await GalleryModel.find();
+                return galleryData;
+            } catch (error) {
+                console.error('Error fetching gallery data:', error);
+                throw new Error('Failed to fetch gallery data');
+            }
+        },
     },
 
     Message: {
@@ -109,6 +119,18 @@ export const resolvers = {
                 return savedMessage;
             } catch (error) {
                 throw new Error("Failed to create message");
+            }
+        },
+        addGallery: async (parent, args) => {
+            try {
+                let { URL, Description} = args;
+                console.log(URL, Description)
+                const gallery = new GalleryModel({ URL, Description });
+                await gallery.save();
+                return gallery;
+            } catch (error) {
+                console.error('Error adding gallery:', error);
+                throw new Error('Failed to add gallery');
             }
         },
     }

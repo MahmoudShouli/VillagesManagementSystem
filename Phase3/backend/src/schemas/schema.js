@@ -30,14 +30,21 @@ export const typeDefs = gql`
         timestamp: Date
     }
 
+    type Gallery {
+        URL: String!
+        Description: String!
+    }
+
     type Query {
         generalInfo: GeneralInfo
         chart: Chart
         admins: [Admin]
         messages(sender: String, receiver: String): [Message]
+        getGallery: [Gallery]
     }
 
     type Mutation {
         createMessage (sender: String, receiver: String, content: String, timestamp: Date): Message
+        addGallery(URL: String!, Description: String!): Gallery
     }
 `;
