@@ -1,6 +1,6 @@
 import express from 'express'
 import Village from '../models/VillageModel.js'
-import resolvers from '../resolvers/VillageResolver.js'
+import { resolvers } from '../resolvers/resolver.js'
 
 const router = express.Router()
 

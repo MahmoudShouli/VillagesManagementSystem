@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { register } from "../apiService";
-import { useAdmin } from "../AdminContext";
+import { register } from "../api/authService";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
@@ -9,7 +8,6 @@ function SignUp() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { setAdmin } = useAdmin();
   const navigate = useNavigate();
 
   const SubmitSignUp = async (e) => {
@@ -18,8 +16,7 @@ function SignUp() {
     console.log(data);
     if (data) {
       setError("");
-      setAdmin(fullName);
-      navigate("/Overview");
+      navigate("/");
     } else {
       setError("The username is already taken");
     }

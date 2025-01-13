@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../apiService';
+import { login } from '../api/authService';
 import { useAdmin } from "../AdminContext";
 
 function LoginForm() {
