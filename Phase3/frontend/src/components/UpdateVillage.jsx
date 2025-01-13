@@ -2,18 +2,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { useContext } from "react";
 import { VillageContext, VillageIndex } from "../pages/Village";
+import { updateVillage } from "../api/apiVillage";
 
 // eslint-disable-next-line react/prop-types
 function UpdateVillage({ onClose }) {
   const { VillageList, setVillageList } = useContext(VillageContext);
-  const { Idx} = useContext(VillageIndex);
+  const { Idx } = useContext(VillageIndex);
   let VillageName = VillageList[Idx][0];
   let Region = VillageList[Idx][1];
   let LandArea = VillageList[Idx][2];
   let Latitude = VillageList[Idx][3];
   let Longitude = VillageList[Idx][4];
-  let Categories = VillageList[Idx][5];
-  let Photo = VillageList[Idx][6];
+  let Photo = VillageList[Idx][5];
+  let Categories = VillageList[Idx][6];
+  let NameUpdated = VillageList[Idx][0];
 
   function handleVillageNameChange(event) {
     VillageName = event.target.value;
@@ -34,16 +36,8 @@ function UpdateVillage({ onClose }) {
     Photo = event.target.files[0];
   }
 
-  const btnClose = () => {
-    if (
-      !Photo ||
-      !VillageName ||
-      !Region ||
-      !LandArea ||
-      !Latitude ||
-      !Longitude
-    )
-      return;
+  const btnClose = (e) => {
+    if (!Photo || !VillageName || !Region) return;
     VillageList[Idx] = [
       VillageName,
       Region,
@@ -51,9 +45,19 @@ function UpdateVillage({ onClose }) {
       Latitude,
       Longitude,
       Categories,
-      Photo,
+      Photo.name,
     ];
     setVillageList(VillageList);
+    updateVillage(
+      NameUpdated,
+      VillageName,
+      Region,
+      LandArea,
+      Latitude,
+      Longitude,
+      Photo.name,
+      Categories
+    );
     onClose();
   };
 
