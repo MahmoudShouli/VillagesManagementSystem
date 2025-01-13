@@ -1,6 +1,6 @@
 import express from 'express'
 import Admin from '../models/AdminModel.js'
-import {resolvers} from '../resolvers/AdminResolver.js'
+import { resolvers } from '../resolvers/resolver.js'
 
 const router = express.Router()
 

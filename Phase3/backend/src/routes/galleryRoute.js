@@ -1,5 +1,5 @@
 import express from 'express'
-import resolvers from '../resolvers/GalleryResolver.js'
+import { resolvers } from '../resolvers/resolver.js'
 
 const router = express.Router()
 
