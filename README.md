@@ -31,7 +31,7 @@
 - We used NoSQL MongoDB because there's no clear relationships in the systems and Mongo provides a lot of flexibilty as everything is stored as documents.
 - Our MongoDB database has 6 collections as shown :
 
-    (provide image )
+    ![database](./Phase3/frontend/src/assets/database.png)
 
 - **admin** contatins info for registered admins. (name, fullname , password)
 - **charts** has info for the age distirbution, gender ratios, and population charts in the overview page.
@@ -94,6 +94,7 @@
 
 
 
+    ![chat](./Phase3/frontend/src/assets/chat.png)
 
 
 
